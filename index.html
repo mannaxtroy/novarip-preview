@@ -43,8 +43,6 @@
     <meta name="twitter:image:alt" content="Novarip — Watch movies, series, anime, K-drama, and Nollywood for free.">
     <meta name="twitter:site" content="@novarip">
     
-    <!-- ─── REDIRECT TO REAL SITE ────────────────────────────── -->
-    <meta http-equiv="refresh" content="0; url=https://novarip.com/">
     <link rel="canonical" href="https://novarip.com/">
 </head>
 <body style="margin:0;padding:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',-apple-system,sans-serif;">
@@ -61,8 +59,15 @@
         </p>
     </div>
     <script>
-        // Redirect immediately for users
-        window.location.href = 'https://novarip.com/';
+        // ─── CHECK IF CRAWLER ────────────────────────────────────
+        var userAgent = navigator.userAgent.toLowerCase();
+        var isBot = /bot|crawler|spider|facebookexternalhit|twitterbot|whatsapp|telegrambot|discordbot|linkedinbot|applebot|googlebot|bingbot|duckduckbot/.test(userAgent);
+        
+        // ─── CRAWLERS → STAY (show meta tags) ──────────────────
+        // ─── USERS → REDIRECT TO REAL SITE ─────────────────────
+        if (!isBot) {
+            window.location.href = 'https://novarip.com/';
+        }
     </script>
 </body>
 </html>
